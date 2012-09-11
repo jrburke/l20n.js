@@ -53,7 +53,31 @@
   instrumental: "Firefoksem",
   locative: "Firefoksie"
 }&gt;
-&lt;about "About {{ brandName.locative }}"&gt;
+&lt;about "O {{ brandName.locative }}"&gt;
+</code></pre>
+
+<p>The API:</p>
+
+<pre><code>var ctx = L20n.getContext();
+ctx.addResource('./locales/en-US/strings.lol');
+ctx.freeze();
+</code></pre>
+
+<p>And lastly:</p>
+
+<pre><code>document.addEventListener('LocalizationReady', function() {
+  var msg = ctx.get('about');
+  alert(msg);
+});
+</code></pre>
+
+<p>Or...</p>
+
+<pre><code>ctx.get('about', null, function(msg) {
+  // `msg` is the value of the string returned by the context 
+  // when all the LOL resources have been downloaded
+  alert(msg);
+}, 'Default fallback');
 </code></pre>
         </section>
 
